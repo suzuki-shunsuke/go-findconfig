@@ -4,9 +4,9 @@ registries:
 
 packages:
 - name: cmdx
-  registry: inline
+  registry: standard
   version: v1.6.0 # renovate: depName=suzuki-shunsuke/cmdx
 
 - name: golangci-lint
-  registry: local
+  registry: standard
   version: v1.42.1 # renovate: depName=golangci/golangci-lint
