@@ -24,6 +24,21 @@ func Find(wd string, exist func(string) bool, names ...string) string {
 	}
 }
 
+func Finds(wd string, exist func(string) bool, names ...string) []string {
+	var files []string
+	for {
+		p := Find(wd, exist, names...)
+		if p == "" {
+			return files
+		}
+		files = append(files, p)
+		if wd == "/" || wd == "" {
+			return files
+		}
+		wd = filepath.Dir(filepath.Dir(p))
+	}
+}
+
 // Exist returns whether a file is found.
 func Exist(p string) bool {
 	_, err := os.Stat(p)
