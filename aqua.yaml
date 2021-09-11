@@ -3,7 +3,7 @@ registries:
   ref: v0.4.2 # renovate: depName=suzuki-shunsuke/aqua-registry
 
 packages:
-- name: cmdx
+- name: suzuki-shunsuke/cmdx
   registry: standard
   version: v1.6.0 # renovate: depName=suzuki-shunsuke/cmdx
 
