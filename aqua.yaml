@@ -3,14 +3,6 @@ registries:
   ref: v0.8.9 # renovate: depName=suzuki-shunsuke/aqua-registry
 
 packages:
-- name: suzuki-shunsuke/cmdx
-  registry: standard
-  version: v1.6.0 # renovate: depName=suzuki-shunsuke/cmdx
-
-- name: golangci/golangci-lint
-  registry: standard
-  version: v1.42.1 # renovate: depName=golangci/golangci-lint
-
-- name: codeclimate/test-reporter
-  registry: standard
-  version: 0.10.1 # renovate: depName=codeclimate/test-reporter
+- name: suzuki-shunsuke/cmdx@v1.6.0
+- name: golangci/golangci-lint@v1.42.1
+- name: codeclimate/test-reporter@0.10.1
