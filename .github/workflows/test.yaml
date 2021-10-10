@@ -17,7 +17,7 @@ jobs:
       with:
         go-version: '1.17'
 
-    - uses: suzuki-shunsuke/aqua-installer@v0.1.3
+    - uses: suzuki-shunsuke/aqua-installer@v0.2.0
       with:
         version: v0.7.6 # renovate: depName=suzuki-shunsuke/aqua
     - run: aqua i -l
