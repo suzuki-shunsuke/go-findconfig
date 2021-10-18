@@ -19,7 +19,7 @@ jobs:
 
     - uses: suzuki-shunsuke/aqua-installer@v0.2.0
       with:
-        version: v0.7.6 # renovate: depName=suzuki-shunsuke/aqua
+        version: v0.7.7 # renovate: depName=suzuki-shunsuke/aqua
     - run: aqua i -l
     - run: echo "$HOME/.aqua/bin" >> $GITHUB_PATH
 
