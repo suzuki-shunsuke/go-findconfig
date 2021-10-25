@@ -28,6 +28,8 @@ jobs:
             -reporter=github-pr-review \
             -level=warning \
             -fail-on-error=1
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: test
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
