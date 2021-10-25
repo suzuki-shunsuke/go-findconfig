@@ -6,6 +6,9 @@ on:
     tags: [v*]
   pull_request:
     branches: [main]
+permissions:
+  contents: read
+  pull-requests: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,13 +20,19 @@ jobs:
       with:
         go-version: '1.17'
 
-    - uses: suzuki-shunsuke/aqua-installer@v0.2.0
+    - uses: int128/aqua-action@v1
       with:
         version: v0.7.9 # renovate: depName=suzuki-shunsuke/aqua
-    - run: aqua i -l
-    - run: echo "$HOME/.aqua/bin" >> $GITHUB_PATH
 
-    - run: golangci-lint run
+    - run: |
+        golangci-lint run --out-format checkstyle |
+          reviewdog -f=checkstyle \
+            -name="golangci-lint" \
+            -reporter=github-pr-review \
+            -level=warning \
+            -fail-on-error=1
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: test
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
