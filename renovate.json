@@ -3,7 +3,7 @@
   "extends": [
     "config:base",
     "github>suzuki-shunsuke/renovate-config:golang",
-    "github>suzuki-shunsuke/aqua-renovate-config"
+    "github>aquaproj/aqua-renovate-config"
   ],
   "regexManagers": [
     {
