@@ -1,17 +1,8 @@
 {
-  "automerge": true,
   "extends": [
     "config:base",
-    "github>suzuki-shunsuke/renovate-config:golang",
-    "github>aquaproj/aqua-renovate-config"
-  ],
-  "regexManagers": [
-    {
-      "fileMatch": [".github/workflows/test.yaml"],
-      "matchStrings": [
-        "version: (?<currentValue>.*?) # renovate: depName=(?<depName>.*)"
-      ],
-      "datasourceTemplate": "github-releases"
-    }
+    "github>suzuki-shunsuke/renovate-config#0.1.1",
+    "github>aquaproj/aqua-renovate-config#0.1.0",
+    "github>aquaproj/aqua-renovate-config:action"
   ]
 }
