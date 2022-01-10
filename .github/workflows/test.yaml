@@ -20,7 +20,7 @@ jobs:
       with:
         go-version: '1.17'
 
-    - uses: aquaproj/aqua-installer@main
+    - uses: aquaproj/aqua-installer@v0.6.0
       with:
         aqua_version: v0.10.0
 
