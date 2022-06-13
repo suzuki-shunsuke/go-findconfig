@@ -17,10 +17,11 @@ func Find(wd string, exist func(string) bool, names ...string) string {
 				return p
 			}
 		}
-		if wd == "/" || wd == "" {
+		parent := filepath.Dir(wd)
+		if wd == parent {
 			return ""
 		}
-		wd = filepath.Dir(wd)
+		wd = parent
 	}
 }
 
@@ -32,10 +33,11 @@ func Finds(wd string, exist func(string) bool, names ...string) []string {
 			return files
 		}
 		files = append(files, p)
-		if wd == "/" || wd == "" {
+		parent := filepath.Dir(filepath.Dir(p))
+		if wd == parent {
 			return files
 		}
-		wd = filepath.Dir(filepath.Dir(p))
+		wd = parent
 	}
 }
 
