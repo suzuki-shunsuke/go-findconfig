@@ -2,7 +2,7 @@
   "extends": [
     "config:base",
     "github>suzuki-shunsuke/renovate-config#0.1.1",
-    "github>aquaproj/aqua-renovate-config#1.3.0",
+    "github>aquaproj/aqua-renovate-config#1.4.0",
     "github>aquaproj/aqua-renovate-config:action"
   ]
 }
