@@ -10,16 +10,21 @@ import (
 // exist returns whether a file is found.
 // names is a list of file names.
 func Find(wd string, exist func(string) bool, names ...string) string {
+	s, _ := find(wd, exist, names...)
+	return s
+}
+
+func find(wd string, exist func(string) bool, names ...string) (string, string) {
 	for {
 		for _, name := range names {
 			p := filepath.Join(wd, name)
 			if exist(p) {
-				return p
+				return p, wd
 			}
 		}
 		parent := filepath.Dir(wd)
 		if wd == parent {
-			return ""
+			return "", ""
 		}
 		wd = parent
 	}
@@ -28,12 +33,12 @@ func Find(wd string, exist func(string) bool, names ...string) string {
 func Finds(wd string, exist func(string) bool, names ...string) []string {
 	var files []string
 	for {
-		p := Find(wd, exist, names...)
+		p, foundDir := find(wd, exist, names...)
 		if p == "" {
 			return files
 		}
 		files = append(files, p)
-		parent := filepath.Dir(filepath.Dir(p))
+		parent := filepath.Dir(foundDir)
 		if wd == parent {
 			return files
 		}
