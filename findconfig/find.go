@@ -22,6 +22,17 @@ func find(wd string, exist func(string) bool, names ...string) (string, string) 
 				return p, wd
 			}
 		}
+
+		// Check in the .config subdirectory of working directory to support adapted XDG Base Directory Specification defined here https://github.com/dot-config/dot-config.github.io.
+		// Only if no file is found in the working directory.
+		configPath := filepath.Join(wd, ".config")
+		for _, name := range names {
+			p := filepath.Join(configPath, name)
+			if exist(p) {
+				return p, wd
+			}
+		}
+
 		parent := filepath.Dir(wd)
 		if wd == parent {
 			return "", ""

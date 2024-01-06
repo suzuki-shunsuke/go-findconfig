@@ -27,6 +27,16 @@ func TestFind(t *testing.T) {
 			},
 		},
 		{
+			title: ".config subdirectory",
+			wd:    "/home/foo/workspace",
+			exp:   "/home/foo/workspace/.config/foo.json",
+			names: []string{".foo.json", "foo.json"},
+			files: []string{
+				"/home/foo/workspace/.config/foo.json",
+				"/home/foo/bar.txt",
+			},
+		},
+		{
 			title: "not found",
 			wd:    "/home/foo/workspace",
 			exp:   "",
@@ -68,6 +78,26 @@ func TestFinds(t *testing.T) {
 			},
 		},
 		{
+			title: ".config subdirectory",
+			wd:    "/home/foo/workspace",
+			exp:   []string{"/home/foo/workspace/.config/foo.json"},
+			names: []string{".foo.json", "foo.json"},
+			files: []string{
+				"/home/foo/workspace/.config/foo.json",
+				"/home/foo/workspace/bar.txt",
+			},
+		},
+		{
+			title: ".config subdirectory file not found",
+			wd:    "/home/foo/workspace",
+			exp:   []string{"/home/foo/workspace/foo.json"},
+			names: []string{".foo.json", "foo.json"},
+			files: []string{
+				"/home/foo/workspace/.config/foo.json",
+				"/home/foo/workspace/foo.json",
+			},
+		},
+		{
 			title: "not found",
 			wd:    "/home/foo/workspace",
 			exp:   nil,
@@ -79,9 +109,12 @@ func TestFinds(t *testing.T) {
 		{
 			title: "multiple",
 			wd:    "/home/foo/workspace",
-			exp:   []string{"/home/foo/foo.json", "/home/.foo.json", "/foo.json"},
+			exp:   []string{"/home/foo/workspace/.config/foo.json", "/home/foo/foo.json", "/home/.foo.json", "/foo.json"},
 			names: []string{".foo.json", "foo.json"},
 			files: []string{
+				"/home/foo/workspace/.config/foo.json", // found because of absence of "/home/foo/workspace/foo.json"
+				"/home/foo/workspace/.config/bar.txt",
+				"/home/foo/.config/foo.json", // not found because of presence of "/home/foo/.foo.json"
 				"/home/foo/foo.json",
 				"/home/foo/bar.txt",
 				"/home/.foo.json",
