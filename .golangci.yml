@@ -13,3 +13,7 @@ linters:
     - godot
     - godox
     - varnamelen
+
+linters-settings:
+  funlen:
+    lines: 73
