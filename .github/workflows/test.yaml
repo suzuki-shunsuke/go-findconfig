@@ -15,16 +15,16 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-go@v5
+    - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+    - uses: actions/setup-go@cdcb36043654635271a94b9a6d1392de5bb323a7 # v5
       with:
         go-version: '1.17'
 
-    - uses: aquaproj/aqua-installer@v3.0.1
+    - uses: aquaproj/aqua-installer@6ce1f8848ec8e61f14d57bd5d7597057a6dd187c # v3.0.1
       with:
         aqua_version: v2.29.0
 
-    - uses: suzuki-shunsuke/github-action-golangci-lint@v0.1.4
+    - uses: suzuki-shunsuke/github-action-golangci-lint@4b6bb7682772359cf0e7959932803ca2ff998895 # v0.1.4
     - name: test
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
