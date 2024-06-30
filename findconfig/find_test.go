@@ -37,7 +37,6 @@ func TestFind(t *testing.T) {
 		},
 	}
 	for _, d := range data {
-		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
 			p := findconfig.Find(d.wd, findconfig.NewMockExist(d.files...), d.names...)
@@ -90,7 +89,6 @@ func TestFinds(t *testing.T) {
 		},
 	}
 	for _, d := range data {
-		d := d
 		t.Run(d.title, func(t *testing.T) {
 			t.Parallel()
 			p := findconfig.Finds(d.wd, findconfig.NewMockExist(d.files...), d.names...)
