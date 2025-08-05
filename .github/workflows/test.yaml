@@ -10,25 +10,12 @@ permissions:
   contents: read
   pull-requests: write
 jobs:
-  build:
-    timeout-minutes: 30
-    runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      with:
-        persist-credentials: false
-    - uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5.5.0
-      with:
-        go-version-version: go.mod
-
-    - uses: aquaproj/aqua-installer@d1fe50798dbadd4eb5b98957290ca175f6b4870f # v4.0.2
-      with:
-        aqua_version: v2.53.5
-
-    - uses: suzuki-shunsuke/github-action-golangci-lint@9ec42b6334deb9b6e0a92372eba2dfbb333062e1 # v0.1.5
-    - name: test
-      env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      run: bash ci/test.sh go-findconfig
+  test:
+    uses: suzuki-shunsuke/go-test-full-workflow/.github/workflows/test.yaml@05399afd417ae28382877ebe5bf7c9288b023df7 # v3.2.1
+    with:
+      aqua_policy_config: aqua-policy.yaml
+      aqua_version: v2.58.3
+      go-version-file: go.mod
+    permissions:
+      pull-requests: write
+      contents: read # To checkout private repository
