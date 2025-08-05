@@ -10,6 +10,15 @@ permissions:
   contents: read
   pull-requests: write
 jobs:
+  status-check:
+    runs-on: ubuntu-24.04
+    if: always() && (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled'))
+    timeout-minutes: 10
+    permissions: {}
+    needs:
+      - test
+    steps:
+      - run: exit 1
   test:
     uses: suzuki-shunsuke/go-test-full-workflow/.github/workflows/test.yaml@05399afd417ae28382877ebe5bf7c9288b023df7 # v3.2.1
     with:
