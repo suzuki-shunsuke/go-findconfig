@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/v2.56.4/json-schema/aqua-yaml.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/v2.56.5/json-schema/aqua-yaml.json
 # aqua - CLI Version Manager
 # https://github.com/aquaproj/aqua
 registries:
