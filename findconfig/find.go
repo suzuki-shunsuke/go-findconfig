@@ -3,6 +3,7 @@ package findconfig
 import (
 	"os"
 	"path/filepath"
+	"slices"
 )
 
 // Find finds file from wd to the root directory recursively.
@@ -55,11 +56,6 @@ func Exist(p string) bool {
 // NewMockExist returns a mock function of Find's exist.
 func NewMockExist(files ...string) func(p string) bool {
 	return func(p string) bool {
-		for _, f := range files {
-			if f == p {
-				return true
-			}
-		}
-		return false
+		return slices.Contains(files, p)
 	}
 }
