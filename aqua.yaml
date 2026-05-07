@@ -10,3 +10,4 @@ packages:
 - name: reviewdog/reviewdog@v0.21.0
 - name: suzuki-shunsuke/ghalint@v1.5.6
 - name: crate-ci/typos@v1.46.0
+- name: google/go-licenses@v2.0.1
